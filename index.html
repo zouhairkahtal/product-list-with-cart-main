@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Frontend Mentor | Product list with cart</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body style="font-family: 'DM Sans', serif">
+    <div
+      class="bg-[hsl(13,31%,94%)] w-full min-h-[900px] flex justify-center p-[100px] gap-10"
+    >
+      <div class="h-[100%] w-[70%] max-w-[800px]">
+        <h1 class="text-[25px] font-[600] pb-[20px]">Desserts</h1>
+        <div id="div" class="gap-6 flex flex-wrap">
+          <!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; -->
+          <!-- <div class="w-full max-w-[250px]">
+            <div class="flex flex-col justify-center items-center">
+              <figure class="bg-blue-900 rounded-[8px] overflow-hidden">
+                <img
+                  src="assets/images/image-baklava-desktop.jpg"
+                  alt="Waffle image"
+                />
+              </figure>
+              <div
+                class="relative bottom-[25px] flex bg-white w-[80%] justify-center items-center h-[50px] border-solid border-2 border-[hsl(14,86%,42%)] rounded-full"
+              >
+                <div
+                  class="flex bg-[hsl(14,86%,46%)] rounded-full h-full w-full justify-around items-center"
+                >
+                  <button class="minus border-solid border-2 border-white w-8 h-8 rounded-full text-white hover:bg-white  hover:text-[hsl(14,86%,42%)]">-</button>
+                  <h2 class="number text-white">0</h2>
+                  <button class="plus border-solid border-2 border-white w-8 h-8 rounded-full text-white hover:bg-white  hover:text-[hsl(14,86%,42%)]">+</button>
+                </div>
+              </div>
+            </div>
+            <div>
+              <p>Waffle</p>
+              <h2 class="font-[500]">Waffle with Berries</h2>
+              <p class="font-[500] text-[hsl(14,86%,42%)]">$6.50</p>
+            </div>
+          </div> -->
+          <!-- ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; -->
+        </div>
+      </div>
+      <!-- /////////////////////////////////// -->
+      <div class="overflow-auto w-[350px] rounded-[10px]">
+        <div class="cart">
+          <h1
+            class="bg-white text-[hsl(14,86%,42%)] h-[40px] pl-5 flex items-end font-[600]"
+          >
+            Your Cart (0)
+          </h1>
+          <div
+            class="h-[260px] w-full bg-white flex items-center justify-center flex-col rounded-b-xl"
+          >
+            <img
+              src="assets/images/illustration-empty-cart.svg"
+              alt="empty-cart"
+            />
+            <p class="text-[14px] text-[hsl(12,20%,44%)] font-[400]">
+              Your added iteems will appear here
+            </p>
+          </div>
+          <div>
+          </div>
+        </div>
+      </div>
+      <div class="orderConfirmed fixed w-full h-screen bg-[#38383896] top-0 bottom-0 hidden items-center justify-center">
+
+        <div class="w-[550px] p-5 bg-white rounded-[10px]">
+          <div class=" h-[30%] pl-5 pt-5 mb-10">
+            <img class="mb-6" src="assets/images/icon-order-confirmed.svg" alt="icon-order-confirmed">
+            <h1 class="text-[30px] tracking-[2px] font-[800]">Order Confirmed</h1>
+            <p class="text-[15px] text-[hsl(14,25%,72%)]">We hope you enjoy your food!</p>
+          </div>
+          <div class="orders pt-5 pl-10  rounded-md bg-[hsl(13,31%,94%)]">
+            
+
+          </div>
+          <div class="w-full flex items-center justify-center  h-[50px] mt-10">
+
+            <button class="w-full bg-[hsl(14,86%,42%)] text-white h-full rounded-full ">
+              start New Order
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
