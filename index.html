@@ -68,15 +68,19 @@
         </div>
       </div>
       <!-- /////////////////////////////////// -->
-      <div class="overflow-auto w-[350px] rounded-[10px]">
-        <div class="cart">
-          <h1
-            class="bg-white text-[hsl(14,86%,42%)] h-[40px] pl-5 flex items-end font-[600]"
-          >
-            Your Cart (0)
-          </h1>
+      <div class="overflow-auto w-[350px] h-full bg-white rounded-[10px]">
+        <div class="cart h-full">
+          <div class="mb-5">
+            <h1
+              class=" text-[hsl(14,86%,42%)] h-[40px] pl-5 flex items-end font-[600]"
+              id="total-items"
+            >
+              Your Cart (0)
+            </h1>
+          </div>
           <div
-            class="h-[260px] w-full bg-white flex items-center justify-center flex-col rounded-b-xl"
+            id="products-element"
+            class="h-full min-h-[250px] w-full bg-white flex items-center justify-center flex-col rounded-b-xl"
           >
             <img
               src="assets/images/illustration-empty-cart.svg"
@@ -86,25 +90,38 @@
               Your added iteems will appear here
             </p>
           </div>
-          <div>
+          <div id="order-total">
+          
+          
+          </div>
+          <div id="confirm-order">
+
+
           </div>
         </div>
       </div>
-      <div class="orderConfirmed fixed w-full h-screen bg-[#38383896] top-0 bottom-0 hidden items-center justify-center">
-
+      <div
+        class="orderConfirmed fixed w-full h-screen bg-[#38383896] top-0 bottom-0 hidden items-center justify-center"
+      >
         <div class="w-[550px] p-5 bg-white rounded-[10px]">
-          <div class=" h-[30%] pl-5 pt-5 mb-10">
-            <img class="mb-6" src="assets/images/icon-order-confirmed.svg" alt="icon-order-confirmed">
-            <h1 class="text-[30px] tracking-[2px] font-[800]">Order Confirmed</h1>
-            <p class="text-[15px] text-[hsl(14,25%,72%)]">We hope you enjoy your food!</p>
+          <div class="h-[30%] pl-5 pt-5 mb-10">
+            <img
+              class="mb-6"
+              src="assets/images/icon-order-confirmed.svg"
+              alt="icon-order-confirmed"
+            />
+            <h1 class="text-[30px] tracking-[2px] font-[800]">
+              Order Confirmed
+            </h1>
+            <p class="text-[15px] text-[hsl(14,25%,72%)]">
+              We hope you enjoy your food!
+            </p>
           </div>
-          <div class="orders pt-5 pl-10  rounded-md bg-[hsl(13,31%,94%)]">
-            
-
-          </div>
-          <div class="w-full flex items-center justify-center  h-[50px] mt-10">
-
-            <button class="w-full bg-[hsl(14,86%,42%)] text-white h-full rounded-full ">
+          <div class="orders pt-5 pl-10 rounded-md bg-[hsl(13,31%,94%)]"></div>
+          <div class="w-full flex items-center justify-center h-[50px] mt-10">
+            <button
+              class="w-full bg-[hsl(14,86%,42%)] text-white h-full rounded-full"
+            >
               start New Order
             </button>
           </div>

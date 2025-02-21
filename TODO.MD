@@ -1,0 +1,6 @@
+- [X] getting data from API
+- [X] listing the items
+- [ ] add events to the buttons
+- [ ] preserve the count of the products
+- [ ] list selected products in the cart
+- [ ] enable the confirmation dialog
