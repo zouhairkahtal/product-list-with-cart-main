@@ -294,8 +294,7 @@ function updateCartView() {
           
   });
 
-  console.log(totalCount);
-  
+
   totalCountElement.innerHTML = `
   Your Cart (${totalCount})
   `;
@@ -305,13 +304,17 @@ function updateCartView() {
 
 function updateActionButtonToOrderControl(id) {
   const target = document.getElementById(id);
-  target.innerHTML = `
- 
-            <div class="flex bg-[hsl(14,86%,46%)] rounded-full h-full w-full justify-around items-center">
-              <button class="minus border-solid border-2 border-white w-8 h-8 rounded-full text-white hover:bg-white hover:text-[hsl(14,86%,42%)]">-</button>
-              <h2 class="number text-white">${0}</h2>
-              <button class="plus border-solid border-2 border-white w-8 h-8 rounded-full text-white hover:bg-white hover:text-[hsl(14,86%,42%)]">+</button>
-            </div>                       
-          `
-  
+  selectedProducts.forEach((x,i) => {    
+    target.innerHTML = `
+   
+              <div class="flex bg-[hsl(14,86%,46%)] rounded-full h-full w-full justify-around items-center">
+                <button class="minus border-solid border-2 border-white w-8 h-8 rounded-full text-white hover:bg-white hover:text-[hsl(14,86%,42%)]">-</button>
+                <h2 class="number text-white">${selectedProducts[i].count}</h2>
+                <button class="plus border-solid border-2 border-white w-8 h-8 rounded-full text-white hover:bg-white hover:text-[hsl(14,86%,42%)]">+</button>
+              </div>                       
+            `
+       
+            console.log(selectedProducts[i].count)
+  })
 }
+ 
