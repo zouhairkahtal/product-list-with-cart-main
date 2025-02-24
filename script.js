@@ -1,12 +1,10 @@
-
 // fetch("./data.json")
 //   .then((res) => res.json())
 //   .then((data) => {
 //     const div = document.getElementById("div");
 //     const cartR = document.querySelector(".cart");
-//     let cart = {}; 
+//     let cart = {};
 
-    
 //     data.forEach((item, i) => {
 //       div.innerHTML += `
 //         <div class="w-full max-w-[250px]" id="card-${i}">
@@ -30,10 +28,10 @@
 
 //     function updateCartView() {
 //       const cartContainer = document.querySelector(".cart-items");
-//       const orders = document.querySelector('.orders'); 
-//       cartContainer.innerHTML = ""; 
+//       const orders = document.querySelector('.orders');
+//       cartContainer.innerHTML = "";
 
-//       orders.innerHTML = ''; 
+//       orders.innerHTML = '';
 //       Object.keys(cart).forEach((index) => {
 //         if (cart[index] > 0) {
 //           const item = data[index];
@@ -49,12 +47,11 @@
 //                 <p class="text-[hsl(7,20%,60%)] font-bold ml-2">$${totalPrice}</p>
 //               </div>
 //             </div>
-//             <button class="remove-btn flex justify-center items-center rounded-full border-solid border-[1px] border-[hsl(13,31%,94%)] h-5 w-5"> 
+//             <button class="remove-btn flex justify-center items-center rounded-full border-solid border-[1px] border-[hsl(13,31%,94%)] h-5 w-5">
 //               <img src="assets/images/icon-remove-item.svg" alt="empty-cart" />
 //             </button>
 //           `;
 
-        
 //           orders.innerHTML += `
 //             <div>
 //               <h2 class="font-bold">${item.name}</h2>
@@ -64,7 +61,7 @@
 //               </div>
 //             </div>
 //           `;
-//           // remove btn 
+//           // remove btn
 //           cartItem.querySelector(".remove-btn").addEventListener("click", () => {
 //             cart[index] = 0;
 //             updateCartView();
@@ -83,16 +80,16 @@
 //       const totalPrice = Object.keys(cart).reduce((sum, index) => {
 //         console.log(cart)
 //         console.log( totalItems)
-        
+
 //         if (cart[index] > 0) {
 //           const item = data[index];
 //           return sum + (item.price * cart[index]);
 //         }
 //         return sum;
 //       }, 0).toFixed(2);
-    
+
 //       if (totalItems === 0) {
-//         cartR.innerHTML = ` 
+//         cartR.innerHTML = `
 //           <h1 class="bg-white text-[hsl(14,86%,42%)] h-[40px] pl-5 flex items-end font-[600]">
 //             Your Cart (0)
 //           </h1>
@@ -130,7 +127,7 @@
 //             orderConfirmed.classList.remove("hidden");
 //             orderConfirmed.classList.add("flex");
 //           }
-          
+
 //           cart = {};
 //           console.log(cart)
 //           updateTotal();
@@ -138,45 +135,39 @@
 //       }
 //     }
 //     // ///////////////////
-//     // 
-    // document.querySelectorAll(".on").forEach((button, index) => {
-    //   cart[index] = 0;
+//     //
+// document.querySelectorAll(".on").forEach((button, index) => {
+//   cart[index] = 0;
 
-    //   button.addEventListener("click", function () {
-    //     if (!button.classList.contains("active")) {
-    //       button.classList.add("active");
-          // button.innerHTML = `
-          //   <div class="flex bg-[hsl(14,86%,46%)] rounded-full h-full w-full justify-around items-center">
-          //     <button class="minus border-solid border-2 border-white w-8 h-8 rounded-full text-white hover:bg-white hover:text-[hsl(14,86%,42%)]">-</button>
-          //     <h2 class="number text-white">${cart[index]}</h2>
-          //     <button class="plus border-solid border-2 border-white w-8 h-8 rounded-full text-white hover:bg-white hover:text-[hsl(14,86%,42%)]">+</button>
-          //   </div>                       
-          // `;
+//   button.addEventListener("click", function () {
+//     if (!button.classList.contains("active")) {
+//       button.classList.add("active");
+// button.innerHTML = `
+//   <div class="flex bg-[hsl(14,86%,46%)] rounded-full h-full w-full justify-around items-center">
+//     <button class="minus border-solid border-2 border-white w-8 h-8 rounded-full text-white hover:bg-white hover:text-[hsl(14,86%,42%)]">-</button>
+//     <h2 class="number text-white">${cart[index]}</h2>
+//     <button class="plus border-solid border-2 border-white w-8 h-8 rounded-full text-white hover:bg-white hover:text-[hsl(14,86%,42%)]">+</button>
+//   </div>
+// `;
 
-    //       const num = button.querySelector(".number");
-    //       button.querySelector(".plus").addEventListener("click", () => {
-    //         cart[index]++;
-    //         num.innerHTML = cart[index];
-    //         updateTotal();
-    //       });
+//       const num = button.querySelector(".number");
+//       button.querySelector(".plus").addEventListener("click", () => {
+//         cart[index]++;
+//         num.innerHTML = cart[index];
+//         updateTotal();
+//       });
 
-    //       button.querySelector(".minus").addEventListener("click", () => {
-    //         if (cart[index] > 0) {
-    //           cart[index]--;
-    //           num.innerHTML = cart[index];
-    //           updateTotal();
-    //         }
-    //       });
-    //     }
-    //   });
-    // });
+//       button.querySelector(".minus").addEventListener("click", () => {
+//         if (cart[index] > 0) {
+//           cart[index]--;
+//           num.innerHTML = cart[index];
+//           updateTotal();
+//         }
+//       });
+//     }
 //   });
-
-
-
-
-
-
+// });
+//   });
 
 let products = [];
 let selectedProducts = [];
@@ -190,24 +181,28 @@ fetch("./data.json")
         id: product.name.split(" ").join("-").toLowerCase(),
       };
     });
-  
+
     renderProducts();
   });
 
 function renderProducts() {
   const div = document.getElementById("div");
   let htmlContent = "";
-  products.forEach((item, i) => {
+  products.forEach((item) => {
     htmlContent += `
-        <div class="w-full max-w-[250px]" id="card-${i}">
+        <div class="w-full max-w-[250px]" >
           <div class="flex flex-col justify-center items-center">
             <figure class="bg-blue-900 rounded-[8px] overflow-hidden">
               <img src="${item.image.desktop}" alt="${item.category} image" />
             </figure>
-            <div id="cart-button-${i}" class="hover:cursor-pointer relative bottom-[25px] flex bg-white w-[80%] justify-center items-center h-[50px] border-solid border-2 border-[hsl(14,86%,42%)] rounded-full">
-              <img src="assets/images/icon-add-to-cart.svg" alt="add-to-cart" />
-              <div class="ml-2 text-[hsl(14,65%,9%)]">Add to Cart</div>
+            <div id="container-button-${item.id}" class=" hover:cursor-pointer relative bottom-[25px] flex bg-white w-[80%] justify-center items-center h-[50px] border-solid border-2 border-[hsl(14,86%,42%)] rounded-full">
+              <div id="cart-button-${item.id}" class="flex justify-center items-center ">
+                <img src="assets/images/icon-add-to-cart.svg" alt="add-to-cart" />
+                <div class="ml-2 text-[hsl(14,65%,9%)]">Add to Cart</div>
+              </div>
             </div>
+
+            
 
           </div>
           <div>
@@ -219,30 +214,20 @@ function renderProducts() {
       `;
   });
   div.innerHTML = htmlContent;
-  products.forEach((item, i) => {
-    const cartButton = document.getElementById(`cart-button-${i}`);
+  products.forEach((item) => {
+    const cartButton = document.getElementById(`cart-button-${item.id}`);
     cartButton.addEventListener("click", () => {
-      const condition1 = selectedProducts.filter((selectedProductItem) => {
-        return selectedProductItem.id == item.id;
+      selectedProducts.push({
+        ...item,
+        count: 1,
       });
-      if (condition1.length != 0) {
-        selectedProducts = selectedProducts.map((product) => {
-          if (product.id === item.id) {
-            return {
-              ...product,
-              count: product.count + 1,
-            };
-          } else {
-            return product;
-          }
-        });
-      } else {
-        selectedProducts.push({
-          ...item,
-          count: 1,
-        });
-        updateActionButtonToOrderControl(`cart-button-${i}`);
-      }
+
+    
+
+      updateActionButtonToOrderControl({
+        ...item,
+        count: 1,
+      });
       updateCartView();
     });
   });
@@ -251,18 +236,25 @@ function renderProducts() {
 function updateCartView() {
   let totalCount = 0;
   const totalCountElement = document.getElementById("total-items");
-  let ProductsElement = document.getElementById("products-element");
+  let ProductsElement = document.getElementById("all-products-element");
+  let OrderTotal = document.getElementById("order-total");
   ProductsElement.innerHTML=""
   ProductsElement.classList.remove('justify-center')
   ProductsElement.classList.add('justify-start')
 
 
-  selectedProducts.forEach((x,i) => {
+
+  selectedProducts.forEach((x, i) => {
     totalCount += x.count;
-    let totalprice = selectedProducts[i].price*selectedProducts[i].count
-    if(totalCount !== 0 ){
-      
-      ProductsElement.innerHTML+= ` 
+    let totalprice = selectedProducts[i].price * selectedProducts[i].count;
+    const OrTotal = selectedProducts.reduce((total, product) => total + (product.count * product.price), 0);
+ 
+    if (totalCount !== 0) {
+      ProductsElement.innerHTML += ` 
+        <div
+            id="products-element${x.id}"
+            class="h-full  w-full bg-white flex  justify-start flex-col rounded-b-xl"
+            >
       <div class=" w-full flex justify-between">
       
           <div class="ml-5">
@@ -272,49 +264,203 @@ function updateCartView() {
           <p class="text-[hsl(7,20%,60%)] font-bold ml-2">$${totalprice}</p>
           </div>
           </div>
-          <button class="mr-5 remove flex justify-center items-center rounded-full border-solid border-[1px] border-[hsl(13,31%,94%)] h-5 w-5"> 
+          <button id="remove-${x.id}"  class="mr-5 remove flex justify-center items-center rounded-full border-solid border-[1px] border-[hsl(13,31%,94%)] h-5 w-5"> 
           <img src="assets/images/icon-remove-item.svg" alt="empty-cart" />
           </button>
           </div>
           <hr class="w-5/6 h-[2px] pb-4 bg-[hsl(13, 31%, 94%)]">
-          `
-          }else{
-            ProductsElement.classList.remove('justify-start')
-            ProductsElement.classList.add('justify-center')
+          </div>
+          `;
+          
+          OrderTotal.innerHTML=`
+          <div class="w-full h-full py-5 bg-red-600 flex justify-between">
+            <p class="ml-5">Order Total</p>  <p class="mr-5 text-xl font-[600] ">$${OrTotal}</p>
+            </div>
+            ` 
+            
+            
+          } else {
+            ProductsElement.classList.remove("justify-start");
+            ProductsElement.classList.add("justify-center");
             ProductsElement.innerHTML = ` 
-        <img
-              src="assets/images/illustration-empty-cart.svg"
-              alt="empty-cart"
+            <img
+            src="assets/images/illustration-empty-cart.svg"
+            alt="empty-cart"
             />
             <p class="text-[14px] text-[hsl(12,20%,44%)] font-[400]">
-              Your added iteems will appear here
+            Your added iteems will appear here
             </p>
-                `
+            `;
           }
-          
-  });
-
-
+          setTimeout(() => {
+            removeFromcart(`remove-${x.id}`, x);
+          }, 0);
+        });
+        
+        if(totalCount==0){
+          OrderTotal.innerHTML=""
+        }
   totalCountElement.innerHTML = `
   Your Cart (${totalCount})
   `;
-  
-
 }
 
-function updateActionButtonToOrderControl(id) {
-  const target = document.getElementById(id);
-  selectedProducts.forEach((x,i) => {    
+function updateActionButtonToOrderControl(item) {
+
+  
+  const target = document.getElementById(`container-button-${item.id}`);
+
     target.innerHTML = `
    
-              <div class="flex bg-[hsl(14,86%,46%)] rounded-full h-full w-full justify-around items-center">
-                <button class="minus border-solid border-2 border-white w-8 h-8 rounded-full text-white hover:bg-white hover:text-[hsl(14,86%,42%)]">-</button>
-                <h2 class="number text-white">${selectedProducts[i].count}</h2>
-                <button class="plus border-solid border-2 border-white w-8 h-8 rounded-full text-white hover:bg-white hover:text-[hsl(14,86%,42%)]">+</button>
+              <div id='add-BTN-${item.id}' class="flex bg-[hsl(14,86%,46%)] rounded-full h-full w-full justify-around items-center">
+                <button id="minus-${item.id}" class="minus border-solid border-2 border-white w-8 h-8 rounded-full text-white hover:bg-white hover:text-[hsl(14,86%,42%)]">-</button>
+                <h2 class="number text-white">${item.count}</h2>
+                <button id="plus-${item.id}" class="plus border-solid border-2 border-white w-8 h-8 rounded-full text-white hover:bg-white hover:text-[hsl(14,86%,42%)]">+</button>
               </div>                       
-            `
-       
-            console.log(selectedProducts[i].count)
-  })
-}
+            `;
+            addToOrder(`plus-${item.id}`,item)
+            minusFromOrder(`minus-${item.id}`,item)
+
  
+}
+function updateActionButtonToOrderControl2(item) {
+
+  
+  const target = document.getElementById(`container-button-${item.id}`);
+
+    target.innerHTML = `
+              <div id="cart-button-${item.id}" class="flex justify-center items-center ">
+                <img src="assets/images/icon-add-to-cart.svg" alt="add-to-cart" />
+               <div class="ml-2 text-[hsl(14,65%,9%)]">Add to Cart</div>
+              </div>                      
+            `;
+      
+            products.forEach((item) => {
+              const cartButton = document.getElementById(`cart-button-${item.id}`);
+              cartButton.addEventListener("click", () => {
+                selectedProducts.push({
+                  ...item,
+                  count: 1,
+                });
+          
+              
+          
+                updateActionButtonToOrderControl({
+                  ...item,
+                  count: 1,
+                });
+                updateCartView();
+              });
+            });
+ 
+}
+
+function addToOrder(id,item) {
+  const addBTN = document.getElementById(id, item);
+
+  
+
+  
+
+  addBTN.addEventListener("click", () => {
+  
+
+    if (item.count>= 0) {
+      selectedProducts = selectedProducts.map((product) => {
+        if (product.id === item.id) {
+          return {
+            ...product,
+            count: product.count + 1,
+          };
+        } else {
+          return product;
+        }
+      });
+      updateActionButtonToOrderControl({
+      ...item,
+      count:item.count+1  
+      
+      })
+    } else {
+      selectedProducts.push({
+        ...item,
+        count: 1,
+      });
+      updateActionButtonToOrderControl({
+        ...item,
+        count: 1, 
+        
+        })
+    }
+    // updateActionButtonToOrderControl(`cart-button-${i}`);
+
+  
+    updateCartView();
+  });
+}
+
+function minusFromOrder(id, item) {
+  const minusBTN = document.getElementById(id, item);
+  
+
+
+  minusBTN.addEventListener("click", () => {
+  
+
+    if (item.count>1) {
+      selectedProducts = selectedProducts.map((product) => {
+        if (product.id === item.id) {
+          return {
+            ...product,
+            count: product.count - 1,
+          };
+        } else {
+          return product;
+        }
+      });
+      updateActionButtonToOrderControl({
+      ...item,
+      count:item.count-1  
+      
+      })
+    } else {
+      selectedProducts = selectedProducts.filter((el)=>el.id!=item.id)
+
+    
+      updateActionButtonToOrderControl({
+        ...item,
+        count: 0, 
+        
+        })
+        updateActionButtonToOrderControl2(item)
+    }
+
+    updateCartView();
+  });
+}
+
+function removeFromcart(id, x) {
+  const removeBTN = document.getElementById(id);
+  const allProductsElement = document.getElementById('all-products-element')
+  const ProductsElement = document.getElementById(`products-element${x.id}`);
+
+  if (removeBTN && ProductsElement) {
+    removeBTN.addEventListener("click", () => {
+      selectedProducts = selectedProducts.filter(item => item.id !== x.id);
+      ProductsElement.remove();
+      if(allProductsElement.childElementCount ===0){
+    
+       x.count=0
+       
+      }
+     updateCartView()
+     updateActionButtonToOrderControl2(x)
+     
+    })
+   
+    
+  }
+
+}
+
+
