@@ -280,17 +280,8 @@ function updateCartView() {
             
             
           } else {
-            ProductsElement.classList.remove("justify-start");
-            ProductsElement.classList.add("justify-center");
-            ProductsElement.innerHTML = ` 
-            <img
-            src="assets/images/illustration-empty-cart.svg"
-            alt="empty-cart"
-            />
-            <p class="text-[14px] text-[hsl(12,20%,44%)] font-[400]">
-            Your added iteems will appear here
-            </p>
-            `;
+            
+         
           }
           setTimeout(() => {
             removeFromcart(`remove-${x.id}`, x);
@@ -299,7 +290,29 @@ function updateCartView() {
         
         if(totalCount==0){
           OrderTotal.innerHTML=""
+          ProductsElement.classList.remove("justify-start");
+          ProductsElement.classList.add("justify-center");
+          ProductsElement.innerHTML = ` 
+          <div 
+          class="h-full min-h-[250px] w-full bg-white flex items-center justify-center flex-col rounded-b-xl"
+          >
+          
+          <img
+          src="assets/images/illustration-empty-cart.svg"
+          alt="empty-cart"
+          />
+          <p class="text-[14px] text-[hsl(12,20%,44%)] font-[400]">
+          Your added iteems will appear here
+          </p>
+          </div>
+          `;
+          confirmedDiv2()
+        }else{
+          confirmedDiv()
+
+
         }
+
   totalCountElement.innerHTML = `
   Your Cart (${totalCount})
   `;
@@ -462,5 +475,29 @@ function removeFromcart(id, x) {
   }
 
 }
+
+
+function confirmedDiv(){
+  const confirmDIV = document.getElementById('confirm-order')
+  confirmDIV.innerHTML=`
+    <div class="w-full p-4 bg-red-400 flex  justify-center mt-6 items-center">
+      <div class="flex justify-center items-center  bg-white p-4 w-full rounded-lg">
+      <img class="mr-2 w-7" src="assets/images/icon-carbon-neutral.svg" alt="icon-carbon-neutral">
+      <p> This is a <span>carbon-neutral</span> delivery</p>
+      </div>
+    </div>
+    <div class="w-[100%] p-4 bg-white flex flex-col justify-center rounded-b-xl items-center">
+       <button id="confirm-btn" class=" bg-[hsl(14,86%,42%)] text-[#fff] w-[100%] p-4 rounded-full">Confirm Order</button>
+     </div>
+  `
+}
+function confirmedDiv2(){
+  const confirmDIV = document.getElementById('confirm-order')
+  confirmDIV.innerHTML=``
+}
+
+
+
+
 
 
