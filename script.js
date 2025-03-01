@@ -343,7 +343,7 @@ function Confirmedpage(){
                 </h1>
                 <p>We hope you Enjoy your food!</p>
               </div>
-              <div id="card-confirm-page" class="w-[85%]  bg-[hsl(20,50%,98%)] rounded-l mb-5">
+              <div id="card-confirm-page" class="w-[85%]  bg-[hsl(20,50%,98%)] rounded-l mb-5 max-h-[300px] overflow-auto">
            
               </div>
               <div class="w-[85%] h-[50px]   mb-10">
@@ -372,11 +372,23 @@ function addproductsToCard(){
       </div>
          <hr class="w-full  h-[2px]  bg-[hsl(13, 31%, 94%)">
     `  
+    startNewOrder(item)
   }
 )
 }
 
-
+function startNewOrder(item){
+  const confirmpage = document.getElementById('confirm-page')
+  const neworderBTN = document.getElementById('btn')
+  neworderBTN.addEventListener('click',()=>{
+    selectedProducts = []
+    confirmpage.classList.remove('flex')
+    confirmpage.classList.add('hidden')
+    updateCartView()
+    updateActionButtonToOrderControl2(item)
+    console.log(selectedProducts)
+  })
+}
 
 
 
