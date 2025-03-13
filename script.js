@@ -1,5 +1,3 @@
-
-
 let products = [];
 let selectedProducts = [];
 
@@ -53,8 +51,6 @@ function renderProducts() {
         count: 1,
       });
 
-    
-
       updateActionButtonToOrderControl({
         ...item,
         count: 1,
@@ -69,17 +65,18 @@ function updateCartView() {
   const totalCountElement = document.getElementById("total-items");
   let ProductsElement = document.getElementById("all-products-element");
   let OrderTotal = document.getElementById("order-total");
-  ProductsElement.innerHTML=""
-  ProductsElement.classList.remove('justify-center')
-  ProductsElement.classList.add('justify-start')
-
-
+  ProductsElement.innerHTML = "";
+  ProductsElement.classList.remove("justify-center");
+  ProductsElement.classList.add("justify-start");
 
   selectedProducts.forEach((x, i) => {
     totalCount += x.count;
     let totalprice = selectedProducts[i].price * selectedProducts[i].count;
-    const OrTotal = selectedProducts.reduce((total, product) => total + (product.count * product.price), 0);
- 
+    const OrTotal = selectedProducts.reduce(
+      (total, product) => total + product.count * product.price,
+      0
+    );
+
     if (totalCount !== 0) {
       ProductsElement.innerHTML += ` 
         <div
@@ -102,28 +99,24 @@ function updateCartView() {
           <hr class="w-5/6 h-[2px] pb-4 bg-[hsl(13, 31%, 94%)]">
           </div>
           `;
-          
-          OrderTotal.innerHTML=`
-          <div class="w-full h-full py-5 bg-red-600 flex justify-between">
+
+      OrderTotal.innerHTML = `
+          <div class="w-full h-full pt-5 pb-2 flex justify-between">
             <p class="ml-5">Order Total</p>  <p class="mr-5 text-xl font-[600] ">$${OrTotal}</p>
             </div>
-            ` 
-            
-            
-          } else {
-            
-         
-          }
-          setTimeout(() => {
-            removeFromcart(`remove-${x.id}`, x);
-          }, 0);
-        });
-        
-        if(totalCount==0){
-          OrderTotal.innerHTML=""
-          ProductsElement.classList.remove("justify-start");
-          ProductsElement.classList.add("justify-center");
-          ProductsElement.innerHTML = ` 
+            `;
+    } else {
+    }
+    setTimeout(() => {
+      removeFromcart(`remove-${x.id}`, x);
+    }, 0);
+  });
+
+  if (totalCount == 0) {
+    OrderTotal.innerHTML = "";
+    ProductsElement.classList.remove("justify-start");
+    ProductsElement.classList.add("justify-center");
+    ProductsElement.innerHTML = ` 
           <div 
           class="h-full min-h-[250px] w-full bg-white flex items-center justify-center flex-col rounded-b-xl"
           >
@@ -137,12 +130,10 @@ function updateCartView() {
           </p>
           </div>
           `;
-          confirmedDiv2()
-        }else{
-          confirmedDiv()
-
-
-        }
+    confirmedDiv2();
+  } else {
+    confirmedDiv();
+  }
 
   totalCountElement.innerHTML = `
   Your Cart (${totalCount})
@@ -150,11 +141,9 @@ function updateCartView() {
 }
 
 function updateActionButtonToOrderControl(item) {
-
-  
   const target = document.getElementById(`container-button-${item.id}`);
 
-    target.innerHTML = `
+  target.innerHTML = `
    
               <div id='add-BTN-${item.id}' class="flex bg-[hsl(14,86%,46%)] rounded-full h-full w-full justify-around items-center">
                 <button id="minus-${item.id}" class="minus border-solid border-2 border-white w-8 h-8 rounded-full text-white hover:bg-white hover:text-[hsl(14,86%,42%)]">-</button>
@@ -162,54 +151,41 @@ function updateActionButtonToOrderControl(item) {
                 <button id="plus-${item.id}" class="plus border-solid border-2 border-white w-8 h-8 rounded-full text-white hover:bg-white hover:text-[hsl(14,86%,42%)]">+</button>
               </div>                       
             `;
-            addToOrder(`plus-${item.id}`,item)
-            minusFromOrder(`minus-${item.id}`,item)
-
- 
+  addToOrder(`plus-${item.id}`, item);
+  minusFromOrder(`minus-${item.id}`, item);
 }
 function updateActionButtonToOrderControl2(item) {
-
-  
   const target = document.getElementById(`container-button-${item.id}`);
 
-    target.innerHTML = `
+  target.innerHTML = `
               <div id="cart-button-${item.id}" class="flex justify-center items-center ">
                 <img src="assets/images/icon-add-to-cart.svg" alt="add-to-cart" />
                <div class="ml-2 text-[hsl(14,65%,9%)]">Add to Cart</div>
               </div>                      
             `;
-      
-            products.forEach((item) => {
-              const cartButton = document.getElementById(`cart-button-${item.id}`);
-              cartButton.addEventListener("click", () => {
-                selectedProducts.push({
-                  ...item,
-                  count: 1,
-                });
-          
-              
-          
-                updateActionButtonToOrderControl({
-                  ...item,
-                  count: 1,
-                });
-                updateCartView();
-              });
-            });
- 
+
+  products.forEach((item) => {
+    const cartButton = document.getElementById(`cart-button-${item.id}`);
+    cartButton.addEventListener("click", () => {
+      selectedProducts.push({
+        ...item,
+        count: 1,
+      });
+
+      updateActionButtonToOrderControl({
+        ...item,
+        count: 1,
+      });
+      updateCartView();
+    });
+  });
 }
 
-function addToOrder(id,item) {
+function addToOrder(id, item) {
   const addBTN = document.getElementById(id, item);
 
-  
-
-  
-
   addBTN.addEventListener("click", () => {
-  
-
-    if (item.count>= 0) {
+    if (item.count >= 0) {
       selectedProducts = selectedProducts.map((product) => {
         if (product.id === item.id) {
           return {
@@ -221,10 +197,9 @@ function addToOrder(id,item) {
         }
       });
       updateActionButtonToOrderControl({
-      ...item,
-      count:item.count+1  
-      
-      })
+        ...item,
+        count: item.count + 1,
+      });
     } else {
       selectedProducts.push({
         ...item,
@@ -232,26 +207,20 @@ function addToOrder(id,item) {
       });
       updateActionButtonToOrderControl({
         ...item,
-        count: 1, 
-        
-        })
+        count: 1,
+      });
     }
     // updateActionButtonToOrderControl(`cart-button-${i}`);
 
-  
     updateCartView();
   });
 }
 
 function minusFromOrder(id, item) {
   const minusBTN = document.getElementById(id, item);
-  
-
 
   minusBTN.addEventListener("click", () => {
-  
-
-    if (item.count>1) {
+    if (item.count > 1) {
       selectedProducts = selectedProducts.map((product) => {
         if (product.id === item.id) {
           return {
@@ -263,20 +232,17 @@ function minusFromOrder(id, item) {
         }
       });
       updateActionButtonToOrderControl({
-      ...item,
-      count:item.count-1  
-      
-      })
+        ...item,
+        count: item.count - 1,
+      });
     } else {
-      selectedProducts = selectedProducts.filter((el)=>el.id!=item.id)
+      selectedProducts = selectedProducts.filter((el) => el.id != item.id);
 
-    
       updateActionButtonToOrderControl({
         ...item,
-        count: 0, 
-        
-        })
-        updateActionButtonToOrderControl2(item)
+        count: 0,
+      });
+      updateActionButtonToOrderControl2(item);
     }
 
     updateCartView();
@@ -285,34 +251,27 @@ function minusFromOrder(id, item) {
 
 function removeFromcart(id, x) {
   const removeBTN = document.getElementById(id);
-  const allProductsElement = document.getElementById('all-products-element')
+  const allProductsElement = document.getElementById("all-products-element");
   const ProductsElement = document.getElementById(`products-element${x.id}`);
 
   if (removeBTN && ProductsElement) {
     removeBTN.addEventListener("click", () => {
-      selectedProducts = selectedProducts.filter(item => item.id !== x.id);
+      selectedProducts = selectedProducts.filter((item) => item.id !== x.id);
       ProductsElement.remove();
-      if(allProductsElement.childElementCount ===0){
-    
-       x.count=0
-       
+      if (allProductsElement.childElementCount === 0) {
+        x.count = 0;
       }
-     updateCartView()
-     updateActionButtonToOrderControl2(x)
-     
-    })
-   
-    
+      updateCartView();
+      updateActionButtonToOrderControl2(x);
+    });
   }
-
 }
 
-
-function confirmedDiv(){
-  const confirmDIV = document.getElementById('confirm-order')
-  confirmDIV.innerHTML=`
-    <div class="w-full p-4 bg-red-400 flex  justify-center mt-6 items-center">
-      <div class="flex justify-center items-center  bg-white p-4 w-full rounded-lg">
+function confirmedDiv() {
+  const confirmDIV = document.getElementById("confirm-order");
+  confirmDIV.innerHTML = `
+    <div class="w-full p-2  flex  justify-center mt-3 items-center">
+      <div class="flex justify-center items-center  bg-[hsl(20,50%,98%)] p-4 w-full rounded-lg">
       <img class="mr-2 w-7" src="assets/images/icon-carbon-neutral.svg" alt="icon-carbon-neutral">
       <p> This is a <span>carbon-neutral</span> delivery</p>
       </div>
@@ -320,21 +279,25 @@ function confirmedDiv(){
     <div class="w-[100%] p-4 bg-white flex flex-col justify-center rounded-b-xl items-center">
        <button id="confirm-btn" class=" bg-[hsl(14,86%,42%)] text-[#fff] w-[100%] p-4 rounded-full">Confirm Order</button>
      </div>
-  `
-  Confirmedpage()
+  `;
+  Confirmedpage();
 }
-function confirmedDiv2(){
-  const confirmDIV = document.getElementById('confirm-order')
-  confirmDIV.innerHTML=``
+function confirmedDiv2() {
+  const confirmDIV = document.getElementById("confirm-order");
+  confirmDIV.innerHTML = ``;
 }
 
-function Confirmedpage(){
-  const confirmpage = document.getElementById('confirm-page')
-  const confirmBTN = document.getElementById('confirm-btn')
-  confirmBTN.addEventListener('click',()=>{
-    confirmpage.classList.remove('hidden')
-    confirmpage.classList.add('flex')
-  confirmpage.innerHTML=`
+function Confirmedpage() {
+  const confirmpage = document.getElementById("confirm-page");
+  const confirmBTN = document.getElementById("confirm-btn");
+  const OrTotal = selectedProducts.reduce(
+    (total, product) => total + product.count * product.price,
+    0
+  );
+  confirmBTN.addEventListener("click", () => {
+    confirmpage.classList.remove("hidden");
+    confirmpage.classList.add("flex");
+    confirmpage.innerHTML = `
      <div class="w-[500px]  bg-white rounded-xl  flex flex-col items-center">
               <div class="w-[85%]  py-5"> 
                 <img class="mb-2 w-10" src="assets/images/icon-order-confirmed.svg" alt="confirm-order">
@@ -343,52 +306,61 @@ function Confirmedpage(){
                 </h1>
                 <p>We hope you Enjoy your food!</p>
               </div>
-              <div id="card-confirm-page" class="w-[85%]  bg-[hsl(20,50%,98%)] rounded-l mb-5 max-h-[300px] overflow-auto">
+              <div id="card-confirm-page" class="w-[85%]  bg-[hsl(20,50%,98%)] rounded-l  max-h-[300px] overflow-y-auto [&::-webkit-scrollbar]:w-2  [&::-webkit-scrollbar-track]:rounded-full  [&::-webkit-scrollbar-track]:bg-gray-100  [&::-webkit-scrollbar-thumb]:rounded-full  [&::-webkit-scrollbar-thumb]:bg-gray-300  ">
            
+              </div>
+              <div class="bg-[hsl(20,50%,98%)] w-[85%] mb-5 py-5 rounded-l">
+              <p class="ml-5 flex justify-between">
+              order Total
+              <span class="mr-5 font-[800] text-[20px]">
+                $${OrTotal}
+              </span>
+              </p>
               </div>
               <div class="w-[85%] h-[50px]   mb-10">
                 <button id="btn" class="w-full h-full text-white rounded-full  bg-[hsl(14,86%,42%)]">
                     Start New Order
                 </button>
               </div>
-          </div>`
-          addproductsToCard()
-  }
-)
+          </div>`;
+    addproductsToCard();
+  });
 }
-function addproductsToCard(){
-  const cardConfirmPage = document.getElementById('card-confirm-page')
-  selectedProducts.forEach((item)=>{
-    cardConfirmPage.innerHTML+=`
+function addproductsToCard() {
+  const cardConfirmPage = document.getElementById("card-confirm-page");
+  selectedProducts.forEach((item) => {
+    cardConfirmPage.innerHTML += `
       <div class=" w-full h-[80px] px-5 flex items-center justify-between">
       <div class="flex">
-      <img class="h-12 mr-5 rounded" src="${item.image.thumbnail}" alt="${item.name}-image">
+      <img class="h-12 mr-5 rounded" src="${item.image.thumbnail}" alt="${
+      item.name
+    }-image">
       <div>
       <p>${item.name}</p>
-      <p class="text-[hsl(14,25%,72%)]"><span class="text-[hsl(14,86%,42%)]">${item.count} x</span> @$${item.price}</p>
+      <p class="text-[hsl(14,25%,72%)]"><span class="text-[hsl(14,86%,42%)]">${
+        item.count
+      } x</span> @$${item.price}</p>
       </div>
       </div>
-           <p class="text-[hsl(7,20%,60%)] font-bold ml-2">$${item.count*item.price}</p>
+           <p class="text-[hsl(7,20%,60%)] font-bold ml-2">$${
+             item.count * item.price
+           }</p>
       </div>
          <hr class="w-full  h-[2px]  bg-[hsl(13, 31%, 94%)">
-    `  
-    startNewOrder(item)
-  }
-)
+    `;
+    startNewOrder(item);
+  });
 }
 
-function startNewOrder(item){
-  const confirmpage = document.getElementById('confirm-page')
-  const neworderBTN = document.getElementById('btn')
-  neworderBTN.addEventListener('click',()=>{
-    selectedProducts = []
-    confirmpage.classList.remove('flex')
-    confirmpage.classList.add('hidden')
-    updateCartView()
-    updateActionButtonToOrderControl2(item)
-    console.log(selectedProducts)
-  })
+function startNewOrder(item) {
+  const confirmpage = document.getElementById("confirm-page");
+  const neworderBTN = document.getElementById("btn");
+  neworderBTN.addEventListener("click", () => {
+    selectedProducts = [];
+    confirmpage.classList.remove("flex");
+    confirmpage.classList.add("hidden");
+    updateCartView();
+    updateActionButtonToOrderControl2(item);
+    console.log(selectedProducts);
+  });
 }
-
-
-
